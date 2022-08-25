@@ -11,7 +11,7 @@ export default {
     const url = new URL(request.url);
     const { env } = process;
     return new Response(
-      await renderToReadableStream(
+      (await renderToReadableStream(
         <html>
           <head>
             <title>Hello World</title>
@@ -32,10 +32,10 @@ export default {
             <span>This instance started at {startUp.toString()}</span>
             <span>The current (server) time is {new Date().toString()}</span>
             <span>You requested {url.pathname + url.search}</span>
-            <pre>env: {JSON.stringify(env.toJSON(), null, 2)}</pre>
+            <pre>env: {JSON.stringify(env, null, 2)}</pre>
           </body>
         </html>
-      )
+      )) as unknown as BlobPart
     );
   },
 };
