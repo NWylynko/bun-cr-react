@@ -1,7 +1,7 @@
 import React from "react";
 import { renderToReadableStream } from "react-dom/server";
 
-const dt = new Intl.DateTimeFormat();
+const startUp = new Date();
 
 const port = Number(process.env.PORT ?? "8080");
 
@@ -10,18 +10,18 @@ export default {
   async fetch(request: Request) {
     const url = new URL(request.url);
     const { env } = process;
-    console.log({ env });
     return new Response(
       await renderToReadableStream(
         <html>
           <head>
             <title>Hello World</title>
           </head>
-          <body>
+          <body style={{ display: "flex", flexDirection: "column" }}>
             <h1>Hello from Bun & React!</h1>
-            <p>The date is {dt.format(new Date())}</p>
+            <span>This instance started at {startUp.toString()}</span>
+            <span>The current (server) time is {new Date().toString()}</span>
             <span>You requested {url.pathname + url.search}</span>
-            <pre>{JSON.stringify(env.toJSON(), null, 2)}</pre>
+            <pre>env: {JSON.stringify(env.toJSON(), null, 2)}</pre>
           </body>
         </html>
       )
