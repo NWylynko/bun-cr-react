@@ -15,8 +15,19 @@ export default {
         <html>
           <head>
             <title>Hello World</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+            <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet" />
           </head>
-          <body style={{ display: "flex", flexDirection: "column" }}>
+          <body
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontFamily: "'Mitr', sans-serif",
+              backgroundColor: "#FFFBDB",
+              color: "#30362F",
+            }}
+          >
             <h1>Hello from Bun & React!</h1>
             <span>This instance started at {startUp.toString()}</span>
             <span>The current (server) time is {new Date().toString()}</span>
